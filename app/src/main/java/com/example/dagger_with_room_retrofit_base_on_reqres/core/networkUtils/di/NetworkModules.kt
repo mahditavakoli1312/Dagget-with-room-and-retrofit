@@ -1,4 +1,4 @@
-package com.example.dagger_with_room_retrofit_base_on_reqres.core.di
+package com.example.dagger_with_room_retrofit_base_on_reqres.core.networkUtils.di
 
 import com.example.dagger_with_room_retrofit_base_on_reqres.core.data.Urls
 import dagger.Module
@@ -12,15 +12,15 @@ object NetworkModules {
 
     @Provides
     @Named("base_url")
-    fun provideBaseUrl(): String = Urls.BASE_URL
+    fun provideBaseurl(): String = Urls.BASE_URL
 
     @Provides
     fun provideRetrofit(
-        @Named("base_url") base_url: String
-    ): Retrofit {
-        return Retrofit.Builder()
-            .baseUrl(base_url)
+        @Named("base_url") baseUrl: String
+    ): Retrofit =
+        Retrofit
+            .Builder()
+            .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-    }
 }
